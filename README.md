@@ -1,1 +1,1 @@
-**Try some bash scripts** __Strong__
+**Try some bash scripts**

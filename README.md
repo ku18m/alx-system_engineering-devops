@@ -1,1 +1,1 @@
-**Try some bash scripts**
+**Trying some bash scripts**

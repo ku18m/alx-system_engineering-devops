@@ -1,0 +1,2 @@
+#!/bin/bash
+cut -f 1 | uniq -u | head -12 | tail +2

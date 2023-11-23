@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # This script prints the IP's with it's HTTP status code from "apache-access.log".
 
-awk '{print $1 " " $9}' apache-access.log
+awk '{ print $1 " " $9}' apache-access.log | sort -nr | uniq -c | sort -nr

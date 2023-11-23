@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# This script prints nums from 0 to 100 "Fizz" for 3 multiple, "Buzz" for 5.
+
+i=1
+while ((i<101))
+do
+	if ((i%3==0 && i%5==0))
+	then
+		echo "FizzBuzz"
+	elif ((i%3==0))
+	then
+		echo "Fizz"
+	elif ((i%5==0))
+	then
+		echo "Buzz"
+	else
+		echo "$i"
+	fi
+	((i+=1))
+done

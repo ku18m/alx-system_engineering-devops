@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script prints the IP's with it's response from "apache-access.log".
+
+awk '{print $1 " " $9}' apache-access.log

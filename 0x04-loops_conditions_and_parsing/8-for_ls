@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This script is displays the content of current directory (only the part after first '-').
+
+LIST="$(ls)"
+for i in $LIST; do
+	echo "$i" | cut -d '-' -f2
+done

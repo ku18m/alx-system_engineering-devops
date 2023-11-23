@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script prints the content of "/etc/passwd".
+
+filename="/etc/passwd"
+while read -r pass;
+do
+	username=$(echo "$pass" | cut -d ':' -f1)
+	group_id=$(echo "$pass" | cut -d ':' -f4)
+	home_directory=$(echo "$pass" | cut -d ':' -f6)
+	command_shell=$(echo "$pass" | cut -d ':' -f7)
+	user_id=$(echo "$pass" | cut -d ':' -f3)
+	password=$(echo "$pass" | cut -d ':' -f2)
+	user_id_info=$(echo "$pass" | cut -d ':' -f5)
+	echo "The user $username is part of the $group_id gang, lives in $home_directory and rides $command_shell. $user_id's place is protected by the passcode $password, more info about the user here: $user_id_info"
+done < $filename

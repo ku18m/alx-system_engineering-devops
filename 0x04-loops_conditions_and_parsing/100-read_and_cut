@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script prints the content of "/etc/passwd".
+
+filename="/etc/passwd"
+while read -r pass;
+do
+	echo "$pass" | cut -d ':' -f1,3,6
+done < $filename

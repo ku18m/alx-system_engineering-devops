@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script displays bash and it's child processes PID.
+# shellcheck disable=SC2009
+
+pgrep -l bash

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This script displays bash and it's child processes PID.
+# shellcheck disable=SC2009
+
+trap "echo 'I am invincible!!!'" 15
+
+i=0
+while ((i==0))
+do
+	echo "To infinity and beyond"
+	sleep 2
+done

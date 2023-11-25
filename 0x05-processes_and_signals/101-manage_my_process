@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# This script kills script 4* process.
+# shellcheck disable=SC2009
+
+initiator() {
+	./manage_my_process &
+    touch /var/run/my_process.pid
+    echo "$!" > /var/run/my_process.pid
+}
+
+if [ "${1}" == "start" ]
+then
+    initiator
+    echo "manage_my_process started"
+elif [ "${1}" == "stop" ]
+then
+    echo "manage_my_process stopped"
+    kill "$(cat /var/run/my_process.pid)"
+    rm /var/run/my_process.pid
+elif [ "${1}" == "restart" ]
+then
+    kill "$(cat /var/run/my_process.pid)"
+    rm /var/run/my_process.pid
+    initiator
+    echo "manage_my_process restarted"
+else
+    echo "Usage: manage_my_process {start|stop|restart}"
+fi

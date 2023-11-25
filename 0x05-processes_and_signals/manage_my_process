@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script kills script 4* process.
+# shellcheck disable=SC2009
+
+while true
+do
+	echo "I am alive!" >> /tmp/my_process
+	sleep 2
+done

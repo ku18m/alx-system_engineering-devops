@@ -29,13 +29,10 @@ int main(void)
 	while (i < 5)
 	{
 		fd = fork();
-		if (fd > 0)
-		{
-			printf("Zombie process created, PID: %d\n", fd);
-			i++;
-		}
-		else
+		if (fd <= 0)
 			exit(2);
+		printf("Zombie process created, PID: %d\n", fd);
+		i++;
 	}
 
 	infinite_while();

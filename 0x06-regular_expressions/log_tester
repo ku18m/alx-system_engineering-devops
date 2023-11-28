@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script is for testing the script with "text_messages.log" file.
+# pipeline "head -100" cuz file is too large make it gives this error "bash: ./100-textme.rb: Argument list too long".
+
+./100* "`cat text_messages.log | head -100`"

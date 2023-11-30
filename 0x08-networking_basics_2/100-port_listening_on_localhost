@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script resolves "localhost" to 127.0.0.2, "facebook.com" to 8.8.8.8.
+
+nc -l localhost 98

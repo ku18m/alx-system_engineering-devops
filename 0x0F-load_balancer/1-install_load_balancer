@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# This script configures a new Ubuntu machine to load balance between two servers.
+sudo apt-get -y update
+sudo apt-get -y install haproxy
+mkdir -p ~/config
+cp /etc/haproxy/haproxy.cfg ~/config/haproxy.cfg.backup
+echo "
+frontend forward
+    bind *:80
+    mode http
+    timeout client 30s
+    default_backend wings
+backend wings
+    timeout connect 10s
+    timeout server 30s
+    mode http
+    balance roundrobin
+    server server-1 54.210.173.51
+    server server-2 52.73.37.123
+" >> /etc/haproxy/haproxy.cfg
+sudo service haproxy restart

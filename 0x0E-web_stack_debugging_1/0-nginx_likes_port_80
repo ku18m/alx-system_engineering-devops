@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 # This script will configure nginx to listen on port 80.
+# I think the problem is that nginx is already running on port 8080.
 sed -i "s/8080/80/" /etc/nginx/sites-enabled/default
+# Restarting nginx.
 sudo service nginx restart

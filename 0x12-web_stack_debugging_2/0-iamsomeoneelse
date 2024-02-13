@@ -1,16 +1,4 @@
 #!/usr/bin/env bash
 # This script is used to switch to another user and run whoami command as that user.
 
-if [ $UID -ne 0 ]; then
-  exit 1
-fi
-
-if [ $# -ne 1 ]; then
-  exit 1
-fi
-
-if ! id "$1" &>/dev/null; then
-  exit 1
-fi
-
 su - "$1" -c "whoami"

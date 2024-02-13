@@ -2,17 +2,14 @@
 # This script is used to switch to another user and run whoami command as that user.
 
 if [ $UID -ne 0 ]; then
-  echo "You need to be root to run this script."
   exit 1
 fi
 
 if [ $# -ne 1 ]; then
-  echo "Usage: $0 <username>"
   exit 1
 fi
 
 if ! id "$1" &>/dev/null; then
-  echo "User $1 does not exist."
   exit 1
 fi
 

@@ -1,23 +1,19 @@
 #!/usr/bin/env bash
 # This script is used to switch to another user and run whoami command as that user.
 
-# Check if the user is root
 if [ $UID -ne 0 ]; then
   echo "You need to be root to run this script."
   exit 1
 fi
 
-# Check if at least one argument is passed
 if [ $# -ne 1 ]; then
   echo "Usage: $0 <username>"
   exit 1
 fi
 
-# Check if the user exists
 if ! id "$1" &>/dev/null; then
   echo "User $1 does not exist."
   exit 1
 fi
 
-# Switch to the user and run whoami command
 su - "$1" -c "whoami"

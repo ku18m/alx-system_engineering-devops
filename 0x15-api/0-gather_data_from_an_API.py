@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-# returns information about his/her TODO list progress.
-import requests
+"""returns information about his/her TODO list progress."""
 from sys import argv
+import requests
 
 if __name__ == "__main__" and argv[1]:
     get = requests.get(

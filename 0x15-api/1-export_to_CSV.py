@@ -8,7 +8,7 @@ if __name__ == "__main__" and argv[1]:
     get = requests.get(
         'https://jsonplaceholder.typicode.com/users/{}'.format(argv[1]))
     response = get.json()
-    name = response.get('name')
+    name = response.get('username')
     get = requests.get(
         'https://jsonplaceholder.typicode.com/todos?userId={}'.format(argv[1]))
     response = get.json()

@@ -2,22 +2,16 @@
 """
 Get and print Top 10 hot posts for a given subreddit
 """
+
 import requests
 
 
-def top_ten(subreddit):
+def number_of_subscribers(subreddit):
     """Get and print Top 10 hot posts for a given subreddit"""
     if subreddit is None or type(subreddit) is not str:
-        print(None)
-        return
-    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    headers = {
-        'User-Agent': 'Ubuntu:testing (by /u/ku18m)'
-    }
-    response = requests.get(
-        url, headers=headers, allow_redirects=False, timeout=10)
-    if response.status_code != 200:
-        print(None)
-        return
-    for post in response.json().get('data').get('children')[:10]:
-        print(post.get('data').get('title'))
+        return 0
+    r = requests.get('http://www.reddit.com/r/{}/about.json'.format(subreddit),
+                     headers={'User-Agent': '0x16-api_advanced:project:\
+v1.0.0 (by /u/ku18m)'}).json()
+    subs = r.get("data", {}).get("subscribers", 0)
+    return subs

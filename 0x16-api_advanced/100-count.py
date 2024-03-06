@@ -37,7 +37,7 @@ def count_words(subreddit, word_list, idx=0, word_count={}):
     title = response[idx].get('data').get('title').split()
     print(title)
     for word in word_list:
-        if word.lower() in [word.lower() for word in title]:
+        if word in [word.lower() for word in title]:
             if word in word_count:
                 word_count[word] += 1
             else:

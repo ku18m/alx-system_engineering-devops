@@ -15,6 +15,8 @@ def count_words(subreddit, word_list, idx=0, word_count={}):
         return
     word_list = [word.lower() for word in word_list]
     word_list = sorted(list(set(word_list)))
+    if word_count == {}:
+        word_count = {word: 0 for word in word_list}
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     headers = {
         'User-Agent': 'Ubuntu:testing (by /u/ku18m)'

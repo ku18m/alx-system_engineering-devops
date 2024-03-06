@@ -10,23 +10,23 @@ class { 'php':
   package_ensure => 'present',
 }
 
-# Set up Apache configuration
-file { '/etc/apache2/sites-available/000-default.conf':
-  ensure  => file,
-  content => template('apache/000-default.conf.erb'),
-  notify  => Service['apache'],
-}
+# Define the path to the WordPress settings file
+$wordpress_settings_file = '/var/www/html/wp-settings.php'
 
-# Set up PHP configuration
-file { '/etc/php/5.5/apache2/php.ini':
+# Manage the WordPress settings file
+file { $wordpress_settings_file:
   ensure  => file,
-  content => template('php/php.ini.erb'),
-  notify  => Service['apache'],
-}
+  content => inline_template("
+<?php
+# Managed by Puppet
 
-# Restart Apache service after configuration changes
-service { 'apache':
-  ensure    => 'running',
-  enable    => true,
-  subscribe => [File['/etc/apache2/sites-available/000-default.conf'], File['/etc/php/5.5/apache2/php.ini']],
+# Read the current content of the file
+${current_content} = file_get_contents('${wordpress_settings_file}');
+
+# Replace 'phpp' extensions with 'php'
+${new_content} = str_replace('phpp', 'php', ${current_content});
+
+echo ${new_content};
+"),
+  notify  => Service['apache'],
 }
